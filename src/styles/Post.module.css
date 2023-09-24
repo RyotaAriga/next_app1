@@ -1,11 +1,11 @@
 /* Post.module.css */
-.container {
+.postContainer {
   max-width: 800px;
   margin: 0 auto;
   padding: 1em;
 }
 
-.title {
+.postTitle {
   font-size: 2em;
   color: #333;
   margin-bottom: 0.5em;

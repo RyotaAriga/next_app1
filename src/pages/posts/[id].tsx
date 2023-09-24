@@ -44,8 +44,8 @@ const Post = ({ post }: Props) => {
     return <div>Loading...</div>
   }
 
-  return <div className={styles.container}>
-    <div className={styles.title}>{post.title}</div>
+  return <div className={styles.postContainer}>
+    <div className={styles.postTitle}>{post.title}</div>
     <div className={styles.date}>{post.created_at}</div>
     <p className={styles.date}>{post.content}</p>
   </div>;
