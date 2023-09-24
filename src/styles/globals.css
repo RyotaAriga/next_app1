@@ -10,6 +10,8 @@
   --color-logo: #333;
   --color-navLink: #020202;
   --color-navLinkHover: #0070f3;
+  --color-postCardBox: #2f3294;
+  --color-title: #000;
     
   
 }
@@ -24,6 +26,8 @@
   --color-logo: #fff; /* ダークテーマ時のロゴの色 */
   --color-navLink: #ffffff79; /* ダークテーマ時のナビリンクの色 */
   --color-navLinkHover: #32ed6a; /* ダークテーマ時のナビリンクのhover色 */
+  --color-postCardBox: #fff;
+  --color-title: #fff;
 }
 
 header{
