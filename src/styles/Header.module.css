@@ -1,37 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700&display=swap");
 .headerContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  /* background-color: #d5d2d271; */
-  background-color: var(--color-header-background);
+  background-color: #f0f0f0;
 }
 
 .logo {
   font-size: 24px;
   font-weight: bold;
-  text-decoration-line: none;
-  /* color: #333; */
-  color: var(--color-logo);
-  
+  color: #333;
 }
 
 .navContainer {
   display: flex;
   gap: 20px;
-  color: var(--color-navLink);
-  
 }
 
 .navLink {
-  text-decoration-line: none;
-  /* color: #333; */
-  color: var(--color-navLink)
-  /* transition: color 0.3s; */
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s;
 }
 
 .navLink:hover {
-  text-decoration: none;
   color: #0070f3;
-  /* color: var(--color-navLinkHover) */
 }

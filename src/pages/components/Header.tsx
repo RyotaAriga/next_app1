@@ -26,25 +26,25 @@ const Header = () => {
         <div className={styles.logo}>Next&Rails_App</div> {/* ロゴのテキストやスタイリングはお好みで */}
       </Link>
       <nav className={styles.navContainer}>
-      <form action="#">
-        <label className="switch">
-          <input
-            type="checkbox" 
-            checked={darkTheme}
-            onChange={handleToggle}
-          />
-          <span className="slider"></span>
-        </label>
-      </form>
-
+      
         <Link href="/about">
-        <div className={styles.navLink}>About</div>
+          <div className={styles.navLink}>About</div>
         </Link>
         <Link href="/contact">
           <div className={styles.navLink}>Contact</div>
         </Link>
+        <form action="#">
+              <label className="switch">
+                <input
+                  type="checkbox" 
+                  checked={darkTheme}
+                  onChange={handleToggle}
+                />
+                <span className="slider"></span>
+              </label>
+            </form>
         <Link href="/login">
-          <div className={styles.navLink}>Login</div>
+        <span className="material-symbols-outlined">login</span>
         </Link>
       </nav>
     </header>
