@@ -6,14 +6,12 @@
   --color-paragraph: #797979;
   --color-button-text: rgb(255, 255, 255);
   --color-background: #ffffff;
-  /* --color-header-background: #ffffff00; */
+  --color-header-background: #ffffffb9;
   --color-logo: #333;
   --color-navLink: #020202;
-  --color-navLinkHover: #0070f3;
+  --color-navLinkHover: #0071f3;
   --color-postCardBox: #2f3294;
-  --color-title: #000;
-    
-  
+  --color-title: #000000;
 }
 
 [data-theme="dark"] {
@@ -22,43 +20,12 @@
   --color-paragraph: #8a8a8a;
   --color-button-text: rgb(0, 0, 0);
   --color-background: #22212b;
-  --color-header-background: #0000003a;
-  --color-logo: #fff; /* ダークテーマ時のロゴの色 */
-  --color-navLink: #ffffff79; /* ダークテーマ時のナビリンクの色 */
-  --color-navLinkHover: #32ed6a; /* ダークテーマ時のナビリンクのhover色 */
+  --color-header-background: #ffffff1b;
+  --color-logo: #fff; 
+  --color-navLink: #ffffff79; 
+  --color-navLinkHover: #32ed6a; 
   --color-postCardBox: #fff;
   --color-title: #fff;
-}
-
-header{
-    .headerContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #f0f0f0;
-  }
-
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-  }
-
-  .navContainer {
-    display: flex;
-    gap: 20px;
-  }
-
-  .navLink {
-    text-decoration: none;
-    color: #333;
-    transition: color 0.3s;
-  }
-
-  .navLink:hover {
-    color: #0070f3;
-  }
 }
 
 body {
