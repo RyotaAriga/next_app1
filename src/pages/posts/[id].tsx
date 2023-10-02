@@ -11,7 +11,7 @@ type Props = {
 //pages/posts/[id].tsx
 
 export async function getStaticPaths() {
-  const res = await fetch("http://localhost:3001/api/v1/posts");
+  const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/posts");
   const posts: Post[] = await res.json();
 
   const paths = posts.map((post) => ({
@@ -25,7 +25,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({params }: { params: { id: string } }) {
-  const res = await fetch(`http://localhost:3001/api/v1/posts/${params.id}`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts/${params.id}`);
   const post = await res.json();
 
   console.log(post);
