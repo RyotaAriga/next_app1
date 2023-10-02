@@ -17,7 +17,7 @@ type Props = {
 };
 
 export async function getStaticProps(){
-  const res = await fetch("http://localhost:0000/api/v1/posts");
+  const res = await fetch("http://0000/api/v1/posts");
   const posts = await res.json();
 
   console.log(posts);
