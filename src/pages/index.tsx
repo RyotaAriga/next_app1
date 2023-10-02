@@ -35,7 +35,7 @@ export default function Home({ posts }: Props){
 
   const handleDelete = async (postId: string) =>{
     try{
-     await axios.delete(`http://localhost:3001/api/v1/posts/${postId}`);
+     await axios.delete(`https://rails-api-dw8w.onrender.com/api/v1/posts/${postId}`);
      router.reload();
     }catch(err){
       alert("削除に失敗しました");
