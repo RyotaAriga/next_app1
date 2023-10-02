@@ -17,7 +17,7 @@ type Props = {
 };
 
 export async function getStaticProps(){
-  const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/v1/posts");
+  const res = await fetch("https://rails-api-dw8w.onrender.com/v1/posts");
   const posts = await res.json();
 
   console.log(posts);
@@ -35,7 +35,7 @@ export default function Home({ posts }: Props){
 
   const handleDelete = async (postId: string) =>{
     try{
-     await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/posts/${postId}`);
+     await axios.delete(`https://rails-api-dw8w.onrender.com/posts/${postId}`);
      router.reload();
     }catch(err){
       alert("削除に失敗しました");

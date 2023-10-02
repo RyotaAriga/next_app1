@@ -11,7 +11,7 @@ type Props = {
 //pages/posts/[id].tsx
 
 export async function getStaticPaths() {
-  const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/posts");
+  const res = await fetch("https://rails-api-dw8w.onrender.com/posts");
   const posts: Post[] = await res.json();
 
   const paths = posts.map((post) => ({
