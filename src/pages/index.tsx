@@ -17,17 +17,28 @@ type Props = {
 };
 
 export async function getStaticProps(){
-  const res = await fetch("https://rails-api-dw8w.onrender.com/api/v1/posts");
-  const posts = await res.json();
+  try {
+    const res = await fetch("https://rails-api-dw8w.onrender.com/api/v1/posts");
+    const data = await res.text(); // テキストとして取得
 
-  console.log(posts);
+    console.log('Response data:', data);
 
-  return {
-    props:{
-      posts,
-    },
-    revalidate: 60 * 60 * 24,
-  };
+    const posts = JSON.parse(data); // 手動で解析
+
+    return {
+      props:{
+        posts,
+      },
+      revalidate: 60 * 60 * 24,
+    };
+  } catch (error) {
+    console.error('Data fetch error:', error);
+    return {
+      props: {
+        posts: [],
+      },
+    };
+  }
 }
 
 export default function Home({ posts }: Props){
