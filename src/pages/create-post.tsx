@@ -13,7 +13,7 @@ const CreatePost = () => {
 
     //APIを叩く
     try {
-      await axios.post("https://rails-api-dw8w.onrender.com/api/vi/posts",{
+      await axios.post("https://rails-api-dw8w.onrender.com/api/v1/posts",{
        title: title,
        content: content,
       });
