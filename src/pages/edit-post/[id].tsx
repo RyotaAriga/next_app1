@@ -8,7 +8,7 @@ type Props = {
 };
 
 export async function getStaticPaths() {
-  const res = await fetch("https://rails-api-dw8w.onrender.com/api/vi/posts");
+  const res = await fetch("https://rails-api-dw8w.onrender.com/api/v1/posts");
   const posts: Post[] = await res.json();
 
   const paths = posts.map((post) => ({
