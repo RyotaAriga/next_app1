@@ -8,7 +8,7 @@ type Props = {
   post: Post;
 };
 
-export async function getServerSideProps(context: any){
+export async function getStaticProps(context: any){
   const id = context.params.id;
 
   const res = await fetch(`http://localhost:3001/api/v1/posts/${id}`);
