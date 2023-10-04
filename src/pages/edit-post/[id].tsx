@@ -22,7 +22,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({params }: { params: { id: string } }) {
-  const res = await fetch(`https://rails-api-dw8w.onrender.com/api/vi/posts/${params.id}`);
+  const res = await fetch(`https://rails-api-dw8w.onrender.com/api/v1/posts/${params.id}`);
   const post = await res.json();
 
   console.log(post);
