@@ -11,17 +11,26 @@ type Props = {
 //pages/posts/[id].tsx
 
 export async function getStaticPaths() {
-  const res = await fetch("https://rails-api-dw8w.onrender.com/api/vi/posts");
-  const posts: Post[] = await res.json();
-
-  const paths = posts.map((post) => ({
-    params: { id: post.id.toString() },
-  }));
-
-  return {
-    paths,
-    fallback: true,
-  };
+  try {
+    const res = await fetch("https://rails-api-dw8w.onrender.com/api/v1/posts");
+    if (!res.ok) {
+      throw new Error("Network response was not ok" + res.statusText);
+    }
+    const posts: Post[] = await res.json();
+    const paths = posts.map((post) => ({
+      params: { id: post.id.toString() },
+    }));
+    return {
+      paths,
+      fallback: true,
+    };
+  } catch (error) {
+    console.error("Failed to fetch posts:", error);
+    return {
+      paths: [],
+      fallback: true,
+    };
+  }
 }
 
 export async function getStaticProps({params }: { params: { id: string } }) {
