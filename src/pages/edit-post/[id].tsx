@@ -1,74 +1,52 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
-import styles from "../../styles/Home.module.css";
-import axios from "axios";
 import { useRouter } from "next/router";
 import { Post } from "@/types";
+import React from "react";
+import styles from "../../styles/Post.module.css"
 
 type Props = {
   post: Post;
 };
 
-export async function getStaticProps(context: any){
-  const id = context.params.id;
+export async function getStaticPaths() {
+  const res = await fetch("https://rails-api-dw8w.onrender.com/api/vi/posts");
+  const posts: Post[] = await res.json();
 
-  const res = await fetch(`http://localhost:3001/api/v1/posts/${id}`);
-  const post = await res.json();
+  const paths = posts.map((post) => ({
+    params: { id: post.id.toString() },
+  }));
 
   return {
-    props: {
-      post,
-    },
+    paths,
+    fallback: true,
   };
 }
 
-const EditPost = ({ post }: Props) => {
-  const [title, setTitle] = useState(post.title);
-  const [content, setContent] = useState(post.content);
+export async function getStaticProps({params }: { params: { id: string } }) {
+  const res = await fetch(`https://rails-api-dw8w.onrender.com/api/vi/posts/${params.id}`);
+  const post = await res.json();
+
+  console.log(post);
+
+  return {
+    props:{
+      post,
+    },
+    revalidate: 60,
+  };
+}
+const Post = ({ post }: Props) => {
   const router = useRouter();
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
+  if(router.isFallback){
+    return <div>Loading...</div>
+  }
 
-    //APIを叩く
-    try {
-      await axios.put(`http://localhost:3001/api/v1/posts/${post.id}`,{
-       title: title,
-       content: content,
-      });
+  return <div className={styles.container}>
+    <div className={styles.title}>{post.title}</div>
+    <div className={styles.date}>{post.created_at}</div>
+    <p className={styles.date}>{post.content}</p>
+  </div>;
 
-      router.push("/");
-    } catch (err) {
-      alert("編集に失敗しました");
-    }
-  };
-
-  return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>ブログ編集</h1>
-      <form className={styles.form} onSubmit={handleSubmit}>
-      <label className={styles.label}>タイトル</label>
-      <input
-        type="text"
-        className={styles.input}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setTitle(e.target.value)
-        }
-        value={title}
-      />
-      <label className={styles.label}>本文</label>
-      <textarea
-        className={styles.textarea} 
-        onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
-         setContent(e.target.value)
-       }
-      value={content}
-      />
-      <button type='submit' className={styles.button}>
-        編集
-        </button>
-      </form>
-    </div>
-  );
 };
 
-export default EditPost;
+export default Post;
